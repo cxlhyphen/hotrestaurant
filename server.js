@@ -13,6 +13,18 @@ var PORT = process.env.PORT || 3500;
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
+// required data arrays
+var tables = require(tableArray);
+var waitlist = require(waitlistArray);
+
+// waitlist & table js data 
+app.get("/api/table", function(req, res) {
+    res.json(tableArray);
+});
+
+app.get("/api/waitlist", function(req, res) {
+    res.json(waitlistArray);
+});
 
 
 // Routes
