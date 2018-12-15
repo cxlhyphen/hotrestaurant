@@ -6,8 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 
+    <script src="jquery-3.3.1.min.js"></script>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
     crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+    crossorigin="anonymous"></script>
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.1/css/all.css" integrity="sha384-gfdkjb5BdAXd+lj+gudLWI+BXq4IuLW5IT+brZEZsLFm++aCMlF1V92rMkPaX4PP"
     crossorigin="anonymous">
 </head>
@@ -21,8 +24,8 @@
                     <br>
         
                     <div class="text-center">
-                        <a href="reserve.html"><button type="button" class="btn btn-lg btn-danger"><i class="fas fa-list-alt"></i> Make Reservation</button></a>
-                        <a href="index.html"><button type="button" class="btn btn-lg btn-default"><i class="fas fa-credit-card"></i> View Tables</button></a>
+                        <a href="/reserve"><button type="button" class="btn btn-lg btn-danger"><i class="fas fa-list-alt"></i> Make Reservation</button></a>
+                        <a href="/"><button type="button" class="btn btn-lg btn-default"><i class="fas fa-credit-card"></i> View Tables</button></a>
                     </div>
                 </div>
         
@@ -53,11 +56,25 @@
                 <footer class="footer">
                   <div class="container">
                       <p>Control Panel</p>
-                    <p><a href="#">Clear Table</a> | <a href="/#">API Table Link</a> | <a href="#">API Wait List</a></p>
+                    <p><a href="/clear">Clear Table</a> | <a href="/api/tables">API Table Link</a> | <a href="/api/waitlist">API Wait List</a></p>
                   </div>
                 </footer>
         
             </div>
         
         </body>
+        <!-- Super necessary stuffs -->
+        <script type="text/javascript">
+        
+        function queryTables(){
+            var currentURL = wondow.location.origin;
+
+            $.ajax({url: currentURL + "/api/tables", method: "GET"})
+            .done(function(tableData) {
+                console.log("currentURL: " + currentURL)
+                console.log("------------------------");
+                console.log(tableData)
+            })
+        } 
+        </script>
 </html>
